@@ -122,6 +122,10 @@ async function handleLogin() {
           <span v-if="loading" class="loading-spinner"></span>
           {{ loading ? '登录中...' : '立即登录' }}
         </button>
+
+        <button type="button" class="register-btn" :disabled="loading" @click="router.push('/register')">
+          企业管理员注册
+        </button>
       </form>
 
       <p class="footer-text">安全登录，保护您的资金安全</p>
@@ -357,6 +361,29 @@ async function handleLogin() {
 }
 
 .login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.register-btn {
+  margin-top: -6px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #bae6fd;
+  background: #f0f9ff;
+  color: #0c4a6e;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.register-btn:hover:not(:disabled) {
+  background: #e0f2fe;
+}
+
+.register-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }

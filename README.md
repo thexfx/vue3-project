@@ -2,6 +2,27 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Banking App Notes
+
+This frontend includes:
+
+- Login page: `/`
+- Enterprise registration page: `/register`
+- Bank home page and V2 account operations after login
+
+Enterprise registration form sends `POST /api/enterprise/register` and supports:
+
+- `OPEN_NEW`: open a new account automatically
+- `LINK_EXISTING`: bind an existing 19-digit account
+
+Key validation rules in UI:
+
+- `creditCode`: 18 chars (`0-9A-Z`)
+- `password`: at least 6 chars
+- `idNumber`: max 128 chars
+- `mobile`: 11 digits (starts with `1`)
+- `accountNo` (only for `LINK_EXISTING`): 19 digits
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

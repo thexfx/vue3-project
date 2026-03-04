@@ -66,6 +66,32 @@ export interface PostingResponse {
   balanceAfter: number
 }
 
+export interface EnterpriseRegisterRequest {
+  enterpriseName: string
+  creditCode: string
+  username: string
+  password: string
+  fullName: string
+  idType: string
+  idNumber: string
+  mobile: string
+  email?: string
+  accountMode: 'OPEN_NEW' | 'LINK_EXISTING'
+  accountNo?: string
+}
+
+export interface EnterpriseRegisterData {
+  entId: number
+  enterpriseName: string
+  adminUserId: number
+  adminUsername: string
+  customerNo: string
+  adminRole: string
+  accountId: number
+  accountNo: string
+  accountMode: 'OPEN_NEW' | 'LINK_EXISTING'
+}
+
 interface AmountRequest {
   amount: number
   remark?: string
@@ -114,6 +140,16 @@ export async function login(username: string, password: string): Promise<ApiResp
     method: 'POST',
     headers: jsonHeaders(),
     body: JSON.stringify({ username, password }),
+  })
+}
+
+export async function registerEnterprise(
+  request: EnterpriseRegisterRequest,
+): Promise<ApiResponse<EnterpriseRegisterData>> {
+  return requestJson<EnterpriseRegisterData>('/enterprise/register', {
+    method: 'POST',
+    headers: jsonHeaders(),
+    body: JSON.stringify(request),
   })
 }
 
